@@ -6,7 +6,8 @@ Ce challenge s'est déroulé sur 30 jours et a pour but principal de faire monte
 
 ## Topologie du challenge
 
-![Uploading SOC-Challenge.drawio (1).png…]()
+![SOC-Challenge](https://github.com/user-attachments/assets/1cf17300-1369-4348-a4df-dafc61a33c5b)
+
 
 
 
