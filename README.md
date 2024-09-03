@@ -2,7 +2,7 @@
 ## Introduction
 Bonjour à tous, dans le but de développer mes compétences techniques sur les différentes tâches que peut rencontrer un analyste SOC, j'ai participé au challenge organisé par le vidéaste MyDFIR.
 
-Ce challenge s'est déroulé sur 30 jours et a pour but principal de faire monter en compétence les aspirants SOC analyste, en proposant des cas concrets.
+Ce challenge s'est déroulé sur 30 jours et a pour but principal de faire monter en compétence les aspirants analyste SOC, en proposant des cas concrets.
 
 ## Topologie du challenge
 ![SOC-Challenge2](https://github.com/user-attachments/assets/6be469de-75cb-4b1a-9614-f945b275b964)
@@ -18,7 +18,7 @@ J'ai pour ma part décidé de partir sur un environnement Ubuntu en faisant bien
 
 ![ELK Server](https://github.com/user-attachments/assets/68a1a64b-443e-4c74-a73a-9197ef313bad)
 
-Une fois la machine lancée, on va se connecter en SSH à celle-ci, mais avant d'effectuer cette étape ça on va faire en sorte que seul notre PC puisse accèder à la machine en autorisant uniquement notre adresse IP Publique.
+Une fois la machine lancée, on va se connecter en SSH à celle-ci, mais avant d'effectuer cette étape on va faire en sorte que seul notre PC puisse accèder à la machine, en autorisant uniquement notre adresse IP Publique.
 La plupart des hébérgeurs cloud propose comme fonctionnalité d'intégré notre machine virtuelle à un groupe de Pare-Feu, qui aura comme règle la suivante : 
 
 ![fw rule](https://github.com/user-attachments/assets/8e8d6fa4-430b-419d-b3ec-9e1a12c6792f)
