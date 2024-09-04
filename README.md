@@ -35,7 +35,7 @@ On doit décommentez la ligne network.host pour entrer l'adresse IP Publique du 
 
 ### Kibana
 
-Au même titre qu'elasticsearch, on va modifier quelques lignes dans le fichier de configuration de Kibana se trouvant au chemin * /etc/kibana/kibana.yml.
+Au même titre qu'elasticsearch, on va modifier quelques lignes dans le fichier de configuration de Kibana se trouvant au chemin /etc/kibana/kibana.yml.
 
 Il faut décommenter la ligne server.host pour y inscrire à nouveau notre adresse IP publique, puis décommentez également la ligne server.port :  
 
@@ -48,8 +48,8 @@ Avant de partir sur l'interface web de Kibana, nous allons créer un token elast
 On va maintenant se connecter à l'interface web de Kibana sur le port 5601, mais pour que cette opération fonctionne, il va falloir au préalable autoriser l'accès depuis notre pc vers l'ip publique du serveur sur ce même port.
 2 Modifictions sont nécéssaires pour autoriser ce flux :
 
-    * Règle de pare-feu autorisant le flux entrant de notre PC sur le port 5601
-    * Règle de pare-feu sur le serveur ELK autorisant les flux entrants sur le port 5601
+   * Règle de pare-feu autorisant le flux entrant de notre PC sur le port 5601
+   * Règle de pare-feu sur le serveur ELK autorisant les flux entrants sur le port 5601
 
   ![allow 5601](https://github.com/user-attachments/assets/0a409eaf-ac62-42f5-863d-50c983b40033)
 ![Capture d’écran 2024-09-04 180637](https://github.com/user-attachments/assets/d8c26cec-6f3b-4086-b220-fd879c4471d0)
