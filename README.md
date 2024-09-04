@@ -35,7 +35,7 @@ On doit décommentez la ligne network.host pour entrer l'adresse IP Publique du 
 
 ### Kibana
 
-Au même titre qu'elasticsearch, on va modifier quelques lignes dans le fichier de configuration de Kibana se trouvant au chemin /etc/kibana/kibana.yml.
+Au même titre qu'Elasticsearch, on va modifier quelques lignes dans le fichier de configuration de Kibana se trouvant au chemin /etc/kibana/kibana.yml.
 
 Il faut décommenter la ligne server.host pour y inscrire à nouveau notre adresse IP publique, puis décommentez également la ligne server.port :  
 
@@ -53,5 +53,8 @@ On va maintenant se connecter à l'interface web de Kibana sur le port 5601, mai
 
   ![allow 5601](https://github.com/user-attachments/assets/0a409eaf-ac62-42f5-863d-50c983b40033)
 ![Capture d’écran 2024-09-04 180637](https://github.com/user-attachments/assets/d8c26cec-6f3b-4086-b220-fd879c4471d0)
+
+L'accès à l'interface web est désormais disponible et la première chose qui nous ais demandées est de rentrer le token généré pour permettre la connexion de notre Elasticsearch sur Kibana :
+![kibana-token](https://github.com/user-attachments/assets/432eb734-a912-48eb-943b-f8bc3b5addba)
 
 
