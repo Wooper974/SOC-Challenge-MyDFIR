@@ -28,9 +28,12 @@ Une fois connecté en SSH, on peut désormais commencer à installer les différ
 ### Elasticsearch
 
 Après avoir installé la dépendance Elasticsearch, nous devons modifier certaines lignes dans le fichier /etc/elasticsearch/elasticsearch.yml.
+
 On doit décommentez la ligne network.host pour entrer l'adresse IP Publique du serveur car par défaut elasticsearch est uniquement accessible depuis le localhost, puis nous devons également décommentez la ligne http.port : 
 
 ![yml](https://github.com/user-attachments/assets/27cb430b-abfd-47f0-9f3a-894857a14886)
+
+### Kibana
 
 
 
