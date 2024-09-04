@@ -23,8 +23,14 @@ La plupart des hébérgeurs cloud propose comme fonctionnalité d'intégré notr
 
 ![fw rule](https://github.com/user-attachments/assets/8e8d6fa4-430b-419d-b3ec-9e1a12c6792f)
 
-Une fois connecté en SSH, on peut désormais commencer à installer les différentes composantes de la stack ELK comme Elasticsearch : 
+Une fois connecté en SSH, on peut désormais commencer à installer les différentes composantes de la stack ELK :
 
+### Elasticsearch
+
+Après avoir installé la dépendance Elasticsearch, nous devons modifier certaines lignes dans le fichier /etc/elasticsearch/elasticsearch.yml.
+On doit décommentez la ligne network.host pour entrer l'adresse IP Publique du serveur car par défaut elasticsearch est uniquement accessible depuis le localhost, puis nous devons également décommentez la ligne http.port : 
+
+![yml](https://github.com/user-attachments/assets/27cb430b-abfd-47f0-9f3a-894857a14886)
 
 
 
