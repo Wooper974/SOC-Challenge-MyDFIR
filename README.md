@@ -29,7 +29,7 @@ Une fois connecté en SSH, on peut désormais commencer à installer les différ
 
 Après avoir installé la dépendance Elasticsearch, nous devons modifier certaines lignes dans le fichier /etc/elasticsearch/elasticsearch.yml.
 
-On doit décommentez la ligne network.host pour entrer l'adresse IP Publique du serveur car par défaut elasticsearch est uniquement accessible depuis le localhost, puis nous devons également décommentez la ligne http.port : 
+On doit décommenter la ligne network.host pour entrer l'adresse IP Publique du serveur car par défaut Elasticsearch est uniquement accessible depuis le localhost, puis nous devons également décommenter la ligne http.port : 
 
 ![yml](https://github.com/user-attachments/assets/27cb430b-abfd-47f0-9f3a-894857a14886)
 
@@ -45,7 +45,7 @@ Avant de partir sur l'interface web de Kibana, nous allons créer un token elast
 
 ![token](https://github.com/user-attachments/assets/c480576e-04d7-4a2e-8b74-1a83f9d49b0f)
 
-On va maintenant se connecter à l'interface web de Kibana sur le port 5601, mais pour que cette opération fonctionne, il va falloir au préalable autoriser l'accès depuis notre pc vers l'ip publique du serveur sur ce même port.
+On va maintenant se connecter à l'interface web de Kibana sur le port 5601, mais pour que cette opération fonctionne, il va falloir au préalable autoriser l'accès depuis notre PC vers l'ip publique du serveur sur ce même port.
 2 Modifictions sont nécéssaires pour autoriser ce flux :
 
    * Règle de pare-feu autorisant le flux entrant de notre PC sur le port 5601
@@ -55,6 +55,7 @@ On va maintenant se connecter à l'interface web de Kibana sur le port 5601, mai
 ![Capture d’écran 2024-09-04 180637](https://github.com/user-attachments/assets/d8c26cec-6f3b-4086-b220-fd879c4471d0)
 
 L'accès à l'interface web est désormais disponible et la première chose qui nous ais demandées est de rentrer le token généré pour permettre la connexion de notre Elasticsearch sur Kibana :
+
 ![kibana-token](https://github.com/user-attachments/assets/432eb734-a912-48eb-943b-f8bc3b5addba)
 
 
