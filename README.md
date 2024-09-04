@@ -47,8 +47,10 @@ Avant de partir sur l'interface web de Kibana, nous allons créer un token elast
 
 On va maintenant se connecter à l'interface web de Kibana sur le port 5601, mais pour que cette opération fonctionne, il va falloir au préalable autoriser l'accès depuis notre pc vers l'ip publique du serveur sur ce même port.
 2 Modifictions sont nécéssaires pour autoriser ce flux :
+
     * Règle de pare-feu autorisant le flux entrant de notre PC sur le port 5601
     * Règle de pare-feu sur le serveur ELK autorisant les flux entrants sur le port 5601
 
-![allow 5601](https://github.com/user-attachments/assets/d99e5f3b-8aa2-40da-ab09-6282dd61a807)    ![Capture d’écran 2024-09-04 180407](https://github.com/user-attachments/assets/4a60151d-a698-4ade-b44b-8309f759b322)
+  ![allow 5601](https://github.com/user-attachments/assets/0a409eaf-ac62-42f5-863d-50c983b40033)
+![Capture d’écran 2024-09-04 180407](https://github.com/user-attachments/assets/4a60151d-a698-4ade-b44b-8309f759b322)
 
