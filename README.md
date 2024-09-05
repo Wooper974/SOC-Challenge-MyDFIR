@@ -60,6 +60,6 @@ L'accès à l'interface web est désormais disponible et la première chose qui 
 
 ## Installation du serveur Windows
 
-Pour les besoins de ce lab, nous allons volontairement créer une machine Windows qui aura le service RDP exposé sur internet.
+Pour les besoins de ce lab, nous allons volontairement créer un serveur Windows 2022 qui aura le service RDP exposé sur internet.
 
 
