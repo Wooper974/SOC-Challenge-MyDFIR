@@ -54,8 +54,10 @@ On va maintenant se connecter à l'interface web de Kibana sur le port 5601, mai
   ![allow 5601](https://github.com/user-attachments/assets/0a409eaf-ac62-42f5-863d-50c983b40033)
 ![Capture d’écran 2024-09-04 180637](https://github.com/user-attachments/assets/d8c26cec-6f3b-4086-b220-fd879c4471d0)
 
-L'accès à l'interface web est désormais disponible et la première chose qui nous ais demandées est de rentrer le token généré pour permettre la connexion de notre Elasticsearch sur Kibana :
+L'accès à l'interface web est désormais disponible et la première chose qui nous ais demandées avant de pouvoir naviguer sur l'interface, consiste à rentrer le token généré pour permettre la connexion de notre Elasticsearch sur Kibana :
 
 ![kibana-token](https://github.com/user-attachments/assets/432eb734-a912-48eb-943b-f8bc3b5addba)
+
+## Installation du serveur Windows
 
 
