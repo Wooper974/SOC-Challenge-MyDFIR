@@ -61,5 +61,6 @@ L'accès à l'interface web est désormais disponible et la première chose qui 
 ## Installation du serveur Windows
 
 Pour les besoins de ce lab, nous allons volontairement créer un serveur Windows 2022 qui aura le service RDP exposé sur internet.
+Conformément à la topologie du challenge, cette machine ne sera pas placée dans le réseau privé virtuel car dans le cas où cette machine serait compromise, l'attaquant aura la possibilité communiquer avec l'entièreté des autres machines du réseau, ce qui n'est clairement pas souhaitable.
 
 
