@@ -61,7 +61,7 @@ L'accès à l'interface web est désormais disponible et la première chose qui 
 ## Installation du serveur Windows
 
 Pour les besoins de ce lab, nous allons volontairement créer un serveur Windows 2022 qui aura le service RDP exposé sur internet.
- Conformément à la topologie du challenge, cette machine ne sera pas placée dans le réseau virtuel privé, car dans le cas où cette machine serait compromise, l'attaquant aura la possibilité de communiquer avec l'entièreté des autres machines du réseau, ce qui n'est clairement pas souhaitable.
+  Conformément à la topologie du challenge, cette machine ne sera pas placée dans le réseau virtuel privé, car dans le cas où cette machine serait compromise, l'attaquant aura la possibilité de communiquer avec l'entièreté des autres machines du réseau, ce qui n'est clairement pas souhaitable.
 
 A la création du serveur windows, il faut simplement ne séléctionner aucun groupe de pare-feu, de manière à autoriser toutes les demandes de connexion en bureau à distance (RDP) en provenance d'internet.
 Une fois la machine créée, on va s'assurer que le service RDP est bien exposé sur internet en entrant l'adresse IP publique du serveur windows depuis notre PC : 
