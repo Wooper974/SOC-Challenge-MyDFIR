@@ -66,6 +66,7 @@ Pour les besoins de ce lab, nous allons volontairement créer un serveur Windows
 A la création du serveur windows, il faut simplement ne séléctionner aucun groupe de pare-feu, de manière à autoriser toutes les demandes de connexion en bureau à distance (RDP) en provenance d'internet.
 Une fois la machine créée, on va s'assurer que le service RDP est bien exposé sur internet en entrant l'adresse IP publique du serveur windows depuis notre PC : 
 
+![winservexpose](https://github.com/user-attachments/assets/89b0ecaa-e624-45dd-9829-40c5a03aadbb)
 
 
 ## Installation du serveur Fleet
