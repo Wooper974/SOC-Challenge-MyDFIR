@@ -71,4 +71,8 @@ Une fois la machine créée, on va s'assurer que le service RDP est bien exposé
 
 ## Installation du serveur Fleet
 
+Tout d'abord un Fleet est un serveur qui va centraliser la gestion des agents Elastic, et un peu de la même manière que les GPO sur un AD, il va permettre de plus facilement pousser les nouvelles configurations sur tous les agents de votre parc informatique.
+
+
+
 
