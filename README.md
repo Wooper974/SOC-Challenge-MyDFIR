@@ -73,9 +73,10 @@ Une fois la machine créée, on va s'assurer que le service RDP est bien exposé
 
 Tout d'abord un Fleet est un serveur qui va centraliser la gestion des agents Elastic, et un peu de la même manière que les GPO sur un AD, il va permettre de plus facilement pousser les nouvelles configurations sur tous les agents de votre parc informatique.
 
-J'ai tout d'abord créer une nouvelle machine virtuelle Ubuntu dans le même réseau privé virtuel que le serveur ELK.
-Ensuite, nous devons faire en sorte que le serveur ELK puisse savoir que nous souhaitons désigner ce nouveau serveur en tant que Fleet, dans l'onglet Management>Fleet, on a la possibilité d'ajouter un serveur fleet en renseignant dans notre cas, l'adresse IP Publique de la machine virtuelle faisant office de serveur Fleet : 
+J'ai dans un premier temps créer une nouvelle machine virtuelle Ubuntu dans le même réseau privé virtuel que le serveur ELK.
+Ensuite, nous devons faire en sorte que le serveur ELK puisse savoir que nous souhaitons désigner ce nouveau serveur en tant que Fleet, et dans l'onglet Management>Fleet, on a la possibilité d'ajouter un serveur fleet en renseignant dans notre cas, l'adresse IP Publique de la machine virtuelle faisant office de serveur Fleet : 
 
+![Capture d'écran 2024-09-21 110442](https://github.com/user-attachments/assets/45fa7a41-f5ed-4a0c-bc4a-55efb56af823)
 
 
 
