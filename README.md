@@ -74,9 +74,7 @@ Une fois la machine créée, on va s'assurer que le service RDP est bien exposé
 Tout d'abord un Fleet est un serveur qui va centraliser la gestion des agents Elastic, et un peu de la même manière que les GPO sur un AD, il va permettre de plus facilement pousser les nouvelles configurations sur tous les agents de votre parc informatique.
 
 J'ai dans un premier temps créer une nouvelle machine virtuelle Ubuntu dans le même réseau virtuel privé que le serveur ELK.  
-Ensuite, nous devons faire en sorte que le serveur ELK puisse savoir que nous souhaitons désigner ce nouveau serveur en tant que Fleet, et dans l'onglet Management>Fleet, on a la possibilité d'ajouter un serveur fleet en renseignant dans notre cas, l'adresse IP Publique de la dernière machine virtuelle créée : 
-
-![Capture d'écran 2024-09-21 110442](https://github.com/user-attachments/assets/45fa7a41-f5ed-4a0c-bc4a-55efb56af823)
+Ensuite, nous devons faire en sorte que le serveur ELK puisse savoir que nous souhaitons désigner ce nouveau serveur en tant que Fleet, et dans l'onglet Management>Fleet, on a la possibilité d'ajouter un serveur fleet en renseignant dans notre cas, l'adresse IP Publique de la dernière machine virtuelle créée.
 
 Il ne nous reste plus qu'à entrer sur le serveur Fleet la commande qui a été générée suite à la précédente manipulation :
 
@@ -96,4 +94,4 @@ Il va falloir faire un peu de troubleshooting pour parvenir à nos fins.
 Premièrement, la documentation elasticsearch précise que la communication entre un agent et le serveur fleet se passe sur le port 8220, on va donc autoriser sur le serveur Fleet la communication sur ce port avec la commande ufw allow 8220.  
 Il va falloir ensuite renseigner sur l'interface web d'Elasticsearch qu'on veut écouter sur ce port, dans Management>Fleet>Settings :
 
-![fleet-hosts-setting-8220](https://github.com/user-attachments/assets/0c6447d2-5242-400c-bce2-1fe02ed26feb)
+![Capture d'écran 2024-09-21 110442](https://github.com/user-attachments/assets/45fa7a41-f5ed-4a0c-bc4a-55efb56af823)
