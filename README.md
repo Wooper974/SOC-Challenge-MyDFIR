@@ -93,5 +93,7 @@ Maintenant que le serveur Fleet est configuré, on peut passer à l'ajout de l'a
 Si vous entrez directement cette série de commande, vous allez vite remarquer qu'elle n'aboutit pas avec un message d'erreur à la clé.  
 Il va falloir faire un peu de troubleshooting pour parvenir à nos fins.  
 
-Premièrement, la documentation elasticsearch précise que la communication entre un agent et le serveur fleet se passe sur le port 8220, on va donc autoriser 
+Premièrement, la documentation elasticsearch précise que la communication entre un agent et le serveur fleet se passe sur le port 8220, on va donc autoriser sur le serveur Fleet la communication sur ce port avec la commande ufw allow 8220.  
+Il va falloir ensuite renseigner sur l'interface web d'Elasticsearch qu'on veut écouter sur ce port, dans Management>Fleet>Settings :
 
+![fleet-hosts-setting-8220](https://github.com/user-attachments/assets/0c6447d2-5242-400c-bce2-1fe02ed26feb)
