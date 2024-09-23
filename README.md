@@ -90,8 +90,8 @@ Maintenant que le serveur Fleet est configuré, on peut passer à l'ajout de l'a
 
 ![Win-policy](https://github.com/user-attachments/assets/a2d0f74a-7f7a-498e-9b6e-f0fd1e9ba709)
 
-Si vous entrez directement cette série de commande, vous allez vite remarquer qu'elle n'aboutit pas avec un message d'erreur à la clé
-Il va falloir faire un peu de troubleshooting pour parvenir à nos fins.
+Si vous entrez directement cette série de commande, vous allez vite remarquer qu'elle n'aboutit pas avec un message d'erreur à la clé.  
+Il va falloir faire un peu de troubleshooting pour parvenir à nos fins.  
 
 Premièrement, 
 
