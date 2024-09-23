@@ -78,5 +78,20 @@ Ensuite, nous devons faire en sorte que le serveur ELK puisse savoir que nous so
 
 ![Capture d'écran 2024-09-21 110442](https://github.com/user-attachments/assets/45fa7a41-f5ed-4a0c-bc4a-55efb56af823)
 
+Il ne nous reste plus qu'à entrer sur le serveur Fleet la commande qui a été générée suite à la précédente manipulation :
 
+![fleet-generate](https://github.com/user-attachments/assets/76210ec3-88df-40d4-b595-5bd7bfefe163)
+
+ATTENTION : Il ne faut pas oublier d'autoriser les flux entrants et sortants entre le serveur Fleet et le serveur ELK.
+
+## Monitoring de la machine Windows
+
+Maintenant que le serveur Fleet est configuré, on peut passer à l'ajout de l'agent elastic sur notre machine windows, et pour cette étape il faut d'abord créer une nouvelle politique d'agent. Cette politique aura pour effet de générer la série de commande à utiliser pour installer l'agent sur un hôte Windows : 
+
+![Win-policy](https://github.com/user-attachments/assets/a2d0f74a-7f7a-498e-9b6e-f0fd1e9ba709)
+
+Si vous entrez directement cette série de commande, vous allez vite remarquer qu'elle n'aboutit pas avec un message d'erreur à la clé
+Il va falloir faire un peu de troubleshooting pour parvenir à nos fins.
+
+Premièrement, 
 
