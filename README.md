@@ -95,3 +95,19 @@ Premièrement, la documentation elasticsearch précise que la communication entr
 Il va falloir ensuite renseigner sur l'interface web d'Elasticsearch qu'on souhaite que le serveur Fleet écoute sur ce port, dans Management>Fleet>Settings :
 
 ![Capture d'écran 2024-09-21 110442](https://github.com/user-attachments/assets/45fa7a41-f5ed-4a0c-bc4a-55efb56af823)
+
+Enfin, il faut ajouter la commande "--insecure" à la fin de la dernière commande car cette option permet d'autoriser le fait qu'on passe par un certificat auto-signée.  
+Nous pouvons maintenant voir que notre serveur Windows remonte bien dans l'interface d'Elasticsearch :
+
+![success-windows-fleet](https://github.com/user-attachments/assets/824c148d-0cb5-4681-b040-a022556e9e0c)
+
+Il reste une dernière chose à faire pour terminer cette étape qui à terme doit permettre la remonter de logs du serveur windows sur notre serveur ELK, car jusqu'à maintenant nous avons fait en sorte que notre serveur windows puisse communiquer avec le serveur Fleet, mais il reste encore quelques autorisation du flux à faire pour permettre la communication avec le serveur ELK.  
+
+Il va falloir s'assurer de deux choses :
+
+   * Autoriser sur le pare-feu interne du serveur ELK qu'il autorise les communications entrantes sur le port 9200
+   * Autoriser sur le pare-feu de notre hébérgeur, la communication entre notre serveur windows et le serveur ELK
+
+Pour vérifier le bon fonctionnement de ces étapes, vous devriez pouvoir observer des logs remontés par le serveur windows dans l'onglet Analytics>Discover.
+
+
