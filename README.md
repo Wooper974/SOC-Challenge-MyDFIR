@@ -92,6 +92,6 @@ Si vous entrez directement cette série de commande, vous allez vite remarquer q
 Il va falloir faire un peu de troubleshooting pour parvenir à nos fins.  
 
 Premièrement, la documentation elasticsearch précise que la communication entre un agent et le serveur fleet se passe sur le port 8220, on va donc autoriser sur le serveur Fleet la communication sur ce port avec la commande ufw allow 8220.  
-Il va falloir ensuite renseigner sur l'interface web d'Elasticsearch qu'on veut écouter sur ce port, dans Management>Fleet>Settings :
+Il va falloir ensuite renseigner sur l'interface web d'Elasticsearch qu'on souhaite que le serveur Fleet écoute sur ce port, dans Management>Fleet>Settings :
 
 ![Capture d'écran 2024-09-21 110442](https://github.com/user-attachments/assets/45fa7a41-f5ed-4a0c-bc4a-55efb56af823)
