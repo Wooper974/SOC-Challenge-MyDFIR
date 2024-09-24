@@ -112,4 +112,6 @@ Pour vérifier le bon fonctionnement de ces étapes, vous devriez pouvoir observ
 
 J'ai par la suite installé Sysmon sur mon serveur windows qui me permettra d'avoir d'avantages de logs pertinents qui seront remontés sur Elasticsearch.
 
+## Injection des logs Sysmon et Defender sur Elasticsearch
+
 
