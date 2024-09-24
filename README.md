@@ -108,6 +108,8 @@ Il va falloir s'assurer de deux choses :
    * Autoriser sur le pare-feu interne du serveur ELK qu'il autorise les communications entrantes sur le port 9200
    * Autoriser sur le pare-feu de notre hébérgeur, la communication entre notre serveur windows et le serveur ELK
 
-Pour vérifier le bon fonctionnement de ces étapes, vous devriez pouvoir observer des logs remontés par le serveur windows dans l'onglet Analytics>Discover.
+Pour vérifier le bon fonctionnement de ces étapes, vous devriez pouvoir observer des logs remontés par le serveur windows dans l'onglet Analytics>Discover.  
+
+J'ai par la suite installé Sysmon sur mon serveur windows qui me permettra d'avoir d'avantages de logs pertinents qui seront remontés sur Elasticsearch.
 
 
