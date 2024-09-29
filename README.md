@@ -5,7 +5,8 @@ Bonjour à tous, dans le but de développer mes compétences techniques sur les 
 Ce challenge s'est déroulé sur 30 jours et a pour but principal de faire monter en compétence les aspirants analyste SOC, en proposant des cas concrets.
 
 ## Topologie du challenge
-![SOC-Challenge2](https://github.com/user-attachments/assets/6be469de-75cb-4b1a-9614-f945b275b964)
+![finalfinaifnal drawio](https://github.com/user-attachments/assets/6f5e1890-8df4-4b88-8313-1ebf1bf1c9ad)
+
 
 Nous utiliserons l'hébergeur cloud Vultr pour installer notre environnement, en commençant par créer notre réseau virtuel privé selon l'adressage que j'ai choisi sur la topologie : 
 
