@@ -115,4 +115,8 @@ J'ai par la suite installé Sysmon sur mon serveur windows qui me permettra d'av
 
 ## Injection des logs Sysmon et Defender sur Elasticsearch
 
+Nous souhaitons être capable de voir les logs Sysmon depuis notre console Elasticsearch, et il va falloir en premier lieu ajouter l'intégration suivante : 
+![wineventlog](https://github.com/user-attachments/assets/fa39aae1-a113-4b57-a80a-9010a1f86cf3)
 
+L'un des champs les plus importants lorsqu'il s'agit de configurer une intégration, est le champ "Channel Name", car c'est dans ce champ qu'on va spécifier le chemin qui contient les logs Sysmon dans l'observateur d'événements :
+![channelname-sysmon](https://github.com/user-attachments/assets/14fffd3d-6da2-45fa-9833-68f6570fb32b)
