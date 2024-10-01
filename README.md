@@ -120,3 +120,12 @@ Nous souhaitons être capable de voir les logs Sysmon depuis notre console Elast
 
 L'un des champs les plus importants lorsqu'il s'agit de configurer une intégration, est le champ "Channel Name", car c'est dans ce champ qu'on va spécifier le chemin qui contient les logs Sysmon dans l'observateur d'événements :
 ![channelname-sysmon](https://github.com/user-attachments/assets/14fffd3d-6da2-45fa-9833-68f6570fb32b)
+
+On va littéralement faire la même manipulation pour les logs de Microsoft Defender sauf que cette fois-ci, on va devoir filtrer les events qu'on veut remonter car ils ne sont pas tous pertinents.  
+Il faut deja commencer par ajouter le bon chemin dans le champ "Channel Name" qui est le suivant : Microsoft-Windows-Windows Defender/Operational.  
+Et maintenant, on va s'intérésser au champ "Event ID" car c'est ici qu'on va pouvoir spécifier les events qu'on souhaite faire remonter :  
+![eventid-defender](https://github.com/user-attachments/assets/baf686e4-bb25-4b91-89f7-4a4b4071ff80)
+
+   * Event ID 1116 : Defender détécte un malware ou un logiciel potentiellement compromettant
+   * Event ID 1117 : Defender a effectué une action pour protéger notre poste d'un malware ou d'un logiciel jugé suspicieux
+   * Event ID 5001 : La fonctionnalitié de Defender permettant de scanner des malware sur notre poste a été désactivée.
