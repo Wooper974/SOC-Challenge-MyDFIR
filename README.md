@@ -135,11 +135,10 @@ Pour vérifier que les logs Sysmon remontent dans notre ELK, on peut rechercher 
 
 ## Installation et Monitoring du serveur Ubuntu
 
-Ce serveur à la même objectif que notre serveur Windows, c'est à dire avoir un service exposé sur internet qui sera en l'occurence SSH.  
+Ce serveur a la même objectif que notre serveur Windows, c'est à dire avoir un service exposé sur internet qui sera en l'occurence SSH.  
 Après avoir installé la version 22.04 de Ubuntu, il faut simplement s'assurer que le service SSH soit bien installé et activé.
 
 Il reste à installer l'agent Elastic sur ce serveur et comme précédemment, on va créer une nouvelle politique d'agent Linux, et étant donné qu'on souhaite collecter les logs d'authentification en SSH, on aura uniquement besoin de collecter les informations du fichier /var/log/auth/log.
 
-Ensuite, on suite le même procéder que pour le serveur windows en créant un nouvelle agent, ce qui aura pour effet de nous générer une commande à entrer sur le serveur Linux pour effectuer l'installation de l'agent.
-
+Ensuite, on va retrouver le même procéder que pour le serveur windows en créant un nouvelle agent, ce qui aura pour effet de nous générer une commande à entrer sur le serveur Linux pour effectuer l'installation de l'agent.
 Pour vérifier que les logs de notre Machine Ubuntu remontent, vous devriez voir apparaître dans le champ "agent.name" le nom du serveur.
