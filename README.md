@@ -129,3 +129,11 @@ Et maintenant, on va s'intérésser au champ "Event ID" car c'est ici qu'on va p
    * Event ID 1116 : Defender détécte un malware ou un logiciel potentiellement compromettant
    * Event ID 1117 : Defender a effectué une action pour protéger notre poste d'un malware ou d'un logiciel jugé suspicieux
    * Event ID 5001 : La fonctionnalitié de Defender permettant de scanner des malware sur notre poste a été désactivée.
+
+Pour vérifier que les logs Sysmon remontent dans notre ELK, on peut rechercher par exemple l'event ID 1 qui correspond à la création de processus : 
+![sysmonlog-discover](https://github.com/user-attachments/assets/b0b0be85-0273-424d-90a7-7dd87959f6a2)
+
+## Installation du serveur Ubuntu
+
+Ce serveur à la même objectif que notre serveur Windows, c'est à dire avoir un service exposé sur internet qui sera en l'occurence SSH.  
+Après avoir installé la version 22.04 de Ubuntu, il faut simplement s'assurer que le service SSH soit bien installé et activé.
