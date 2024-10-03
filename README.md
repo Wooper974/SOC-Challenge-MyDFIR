@@ -148,7 +148,7 @@ Pour vérifier que les logs de notre Machine Ubuntu remontent, vous devriez voir
 
 On va créer une alerte qui est en soit relativement simple mais qui répond néanmoins à ce que recherchions, à savoir être alerter lorsqu'il y a potentiellement une attaque par brute force faite sur notre machine Windows et Linux qui ont respectivement le service RDP et SSH exposé sur internet.
 
-Pour notre machine Linux, on va créer cette alerte qui sera déclenché dès qu'il y aura plus de 3 tentatives de connexions par SSH à notre machine en l'espace de 2 minutes : 
+Pour notre machine Linux, on va créer cette alerte qui sera déclenché dès qu'il y aura plus de 3 tentatives de connexions par SSH à notre machine en l'espace de 2 minutes :  
 ![alert-sshbruteforce](https://github.com/user-attachments/assets/91c857eb-ce41-45bb-bfbc-40db863ef85f)
 
 Pour notre machine Windows, on utilise la même approche adaptée pour le service RDP car on va regarder cette fois-ci l'event ID 4625 qui signifie qu'il y a eu un compte qui n'a pas réussi à s'authentifier, et donc potentiellement une attaque par bruteforce : 
