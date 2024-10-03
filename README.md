@@ -138,7 +138,18 @@ Pour vérifier que les logs Sysmon remontent dans notre ELK, on peut rechercher 
 Ce serveur a la même objectif que notre serveur Windows, c'est à dire avoir un service exposé sur internet qui sera en l'occurence SSH.  
 Après avoir installé la version 22.04 de Ubuntu, il faut simplement s'assurer que le service SSH soit bien installé et activé.
 
-Il reste à installer l'agent Elastic sur ce serveur et comme précédemment, on va créer une nouvelle politique d'agent Linux, et étant donné qu'on souhaite collecter les logs d'authentification en SSH, on aura uniquement besoin de collecter les informations du fichier /var/log/auth/log.
+Il reste à installer l'agent Elastic sur ce serveur et comme précédemment, on va créer une nouvelle politique d'agent Linux.  
+On souhaite collecter les logs permettant d'observer une attaque par bruteforce en passant par le service SSH, on aura donc uniquement besoin de collecter les informations du fichier /var/log/auth/log.
 
 Ensuite, on va retrouver le même procéder que pour le serveur windows en créant un nouvelle agent, ce qui aura pour effet de nous générer une commande à entrer sur le serveur Linux pour effectuer l'installation de l'agent. ATTENTION : Il ne faut pas oublier de créer une règle de pare-feu qui autorise la communication entre notre nouveau serveur Linux et le serveur ELK
 Pour vérifier que les logs de notre Machine Ubuntu remontent, vous devriez voir apparaître dans le champ "agent.name" le nom du serveur.
+
+## Création des alertes sur ELK
+
+On va créer une alerte qui est en soit relativement simple mais qui répond néanmoins à ce que recherchions, à savoir être alerter lorsqu'il y a potentiellement une attaque par brute force faite sur notre machine Windows et Linux qui ont respectivement le service RDP et SSH exposé sur internet.
+
+Pour notre machine Linux, on va créer cette alerte qui sera déclenché dès qu'il y aura plus de 3 tentatives de connexions par SSH à notre machine en l'espace de 2 minutes : 
+![alert-sshbruteforce](https://github.com/user-attachments/assets/91c857eb-ce41-45bb-bfbc-40db863ef85f)
+
+Pour notre machine Windows, on utilise la même approche adaptée pour le service RDP car on va regarder cette fois-ci l'event ID 4625 qui signifie qu'il y a eu un compte qui n'a pas réussi à s'authentifier, et donc potentiellement une attaque par bruteforce : 
+![alert-rdp brute force](https://github.com/user-attachments/assets/5c21ec62-cec0-4d5d-93d2-4ea5df4e1a2a)
