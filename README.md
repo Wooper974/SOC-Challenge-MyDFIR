@@ -153,3 +153,5 @@ Pour notre machine Linux, on va créer cette alerte qui sera déclenché dès qu
 
 Pour notre machine Windows, on utilise la même approche adaptée pour le service RDP car on va regarder cette fois-ci l'event ID 4625 qui signifie qu'il y a eu un compte qui n'a pas réussi à s'authentifier, et donc potentiellement une attaque par bruteforce : 
 ![alert-rdp brute force](https://github.com/user-attachments/assets/5c21ec62-cec0-4d5d-93d2-4ea5df4e1a2a)
+
+Les deux règles que nous venons de créer ne sont toutefois pas 
