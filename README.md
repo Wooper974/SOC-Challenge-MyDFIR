@@ -154,4 +154,11 @@ Pour notre machine Linux, on va créer cette alerte qui sera déclenché dès qu
 Pour notre machine Windows, on utilise la même approche adaptée pour le service RDP car on va regarder cette fois-ci l'event ID 4625 qui signifie qu'il y a eu un compte qui n'a pas réussi à s'authentifier, et donc potentiellement une attaque par bruteforce : 
 ![alert-rdp brute force](https://github.com/user-attachments/assets/5c21ec62-cec0-4d5d-93d2-4ea5df4e1a2a)
 
-Les deux règles que nous venons de créer ne sont toutefois pas 
+Les deux règles que nous venons de créer ne sont toutefois pas aussi optimales que nous le souhaitons car en l'état, si vous regardez comment sont affichés les alertes qui remontent, l'affichage des informations pertinentes sont loin d'être facilement visible.  
+Nous allons donc maintenant créer des règles de détéctions en séléctionnant les champs qui vont fortement nous intérésser, à savoir :  
+   * L'adresse source qui initie la tentative de connexion en SSH ou RDP
+   * Le nom d'utilisateur qui tente de s'authentifier
+
+Dans Security>Rules>Detection rules, on a la possibilité de créer des règles de détéction un peu plus customizable en spécifiant les champs qui nous intéressent : 
+![Capture d’écran 2024-10-07 181552](https://github.com/user-attachments/assets/72eb7fa1-a977-4a17-b98d-2a1fdcde7f22)
+
