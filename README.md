@@ -162,3 +162,9 @@ Nous allons donc maintenant créer des règles de détéctions en séléctionnan
 Dans Security>Rules>Detection rules, on a la possibilité de créer des règles de détéction un peu plus customizable en spécifiant les champs qui nous intéressent : 
 ![Capture d’écran 2024-10-07 181552](https://github.com/user-attachments/assets/72eb7fa1-a977-4a17-b98d-2a1fdcde7f22)
 
+## Mise en place de l'environnement de l'attaquant
+
+Tout d'abord, l'attaquant utilisera comme technique ce qu'on appelle une attaque par Command & Control, qui peut se traduite par le fait qu'un attaquant tente de contrôler le système de la victime via plusieurs moyens. 
+Ici, nous utiliserons un C2 server de manière à pouvoir injecter un fichier malveillant sur la machine de la victime, ce qui nous permettra par la suite d'avoir plus de privélége sur celle-ci afin de pouvoir réaliser des actions comme exfiltrer un fichier de la victime contenant des données confidentiels vers notre serveur.
+
+
