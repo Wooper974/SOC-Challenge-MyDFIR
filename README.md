@@ -167,4 +167,22 @@ Dans Security>Rules>Detection rules, on a la possibilité de créer des règles 
 Tout d'abord, l'attaquant utilisera comme technique ce qu'on appelle une attaque par Command & Control, qui peut se traduite par le fait qu'un attaquant tente de contrôler le système de la victime via plusieurs moyens. 
 Ici, nous utiliserons un C2 server de manière à pouvoir injecter un fichier malveillant sur la machine de la victime, ce qui nous permettra par la suite d'avoir plus de privélége sur celle-ci afin de pouvoir réaliser des actions comme exfiltrer un fichier de la victime contenant des données confidentiels vers notre serveur.
 
+### Installation et configuration du C2 Server
+
+On va premièrement installer une distribution Linux basique type Ubuntu 22.04 pour ensuite installer Docker sur cette machine.
+
+J'ai décidé d'utiliser le framework Mythic comme C2 server, et on va donc le téléchargé directement depuis son repositery avec la commande git clone https://github.com/its-a-feature/Mythic.  
+Une fois dans le dossier Mythic, on va lancer le script qui permet de l'installer sur Docker via 2 séries de commande 
+   * ./install_docker_ubuntu.sh
+   * make
+On maintenant lancer mythic avec la commande suivante : ./mythic_cli start  
+
+Après avoir démarré Mythic, on va tout de suite se diriger vers son interface web (https:AdresseIP:7443).  
+INFO : Les identifiants de connexion se trouve dans le fichier .env  
+
+Nous avons désormais un C2 server fonctionnel qu'on va pouvoir utiliser pour parvenir à notre objectif de compromission.
+
+### Initialisation de l'agent Mythic
+
+
 
