@@ -182,7 +182,17 @@ INFO : Les identifiants de connexion se trouve dans le fichier .env
 
 Nous avons désormais un C2 server fonctionnel qu'on va pouvoir utiliser pour parvenir à notre objectif de compromission.
 
+### Phase 1 : Initial Access
+
+Cette première phase a pour objectif d'obtenir un premier accès sur la machine victime depuis le poste attaquant.
+Ce lab n'a pas pour but de se concentrer sur cette axe offensive donc nous allons établir un scénario assez simpliste où l'utilisateur de la machine windows a définit un mot de passe faible pour son compte Administrateur (Snk123!).  
+Ensuite, on souhaite avoir un accès en RDP à la machine victime, on va donc faire faire une attaque par bruteforce depuis notre machine kali en ajoutant le mot de passe précédemment cité à notre wordlist :  
+![rddddp successsssss](https://github.com/user-attachments/assets/992a926d-ac12-4479-baaf-8c5525f903a2)
+
+
 ### Initialisation de l'agent Mythic
+
+Nous allons maintenant générer un agent Mythic qui va permettre à la machine windows d'établir une connexion avec notre C2 server.
 
 
 
