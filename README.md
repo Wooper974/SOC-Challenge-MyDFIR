@@ -214,7 +214,10 @@ Dans Payload>Generate New Payload, on va utiliser les paramètres suivants :
    * C2 Profiles : http  
 ATTENTION : il faut modifier le champ "Callback host" car nous souhaitons passer par http, il faut aussi renseigner l'adresse IP Publique de notre C2 Server :  
 ![c2 profiles](https://github.com/user-attachments/assets/2071c49a-4ec8-4aa9-b062-a33a2c4d2a7b)
-    
+
+Et enfin, on peut donner un nom à notre payload :  
+![svchost-wooper](https://github.com/user-attachments/assets/33d2bd88-a083-410d-9db2-fd3c7a2d5638)
+  
 
 
 
