@@ -195,7 +195,7 @@ On va ensuite désactiver les défenses de la machine windows pour faciliter l'e
 Ici, nous allons principalement désactiver Windows Defender et plus particulièrement sa protection en temps réel.
 
 
-### Initialisation de l'agent Mythic
+### Phase 3 : Initialisation de l'agent Mythic (Execution)
 
 Nous allons maintenant générer un agent Mythic qui va permettre à la machine windows d'établir une connexion avec notre C2 server.
 
