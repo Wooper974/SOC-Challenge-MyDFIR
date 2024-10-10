@@ -189,6 +189,11 @@ Ce lab n'a pas pour but de se concentrer sur cette axe offensive donc nous allon
 Ensuite, on souhaite avoir un accès en RDP à la machine victime, on va donc faire faire une attaque par bruteforce depuis notre machine kali en ajoutant le mot de passe précédemment cité à notre wordlist :  
 ![rddddp successsssss](https://github.com/user-attachments/assets/992a926d-ac12-4479-baaf-8c5525f903a2)
 
+### Phase 2 : Defense Evasion
+
+On va ensuite désactiver les défenses de la machine windows pour faciliter l'exfiltration vers notre C2 server.
+Ici, nous allons principalement désactiver Windows Defender et plus particulièrement sa protection en temps réel.
+
 
 ### Initialisation de l'agent Mythic
 
