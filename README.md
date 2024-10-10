@@ -204,8 +204,17 @@ Tout d'abord, il faut télécharger un agent qui soit compatible avec un OS Wind
 
 Ensuite, il faut également télécharger un "C2 Profile" et celui que nous allons choisir dans notre cas est le profil http via cette commande : ./mythic-cli install https://github.com/MythicC2Profiles/http
 
-On peut maintenant observer les deux composants qui vont nous servir pour générer notre Payload
+On peut maintenant observer les deux composants qui vont nous servir pour générer notre payload : 
 ![apollo online](https://github.com/user-attachments/assets/1cd2a290-c46d-4beb-8e47-ebbf0214fc12) ![c2 profiles mythric](https://github.com/user-attachments/assets/29f9de93-cfcb-402b-99d7-72fc09d1bde4)
+
+Dans Payload>Generate New Payload, on va utiliser les paramètres suivants :  
+   * OS : Windows
+   * Type : WinExe
+   * Commands : Inclure toutes les commandes
+   * C2 Profiles : http  
+ATTENTION : il faut modifier le champ "Callback host" car nous souhaitons passer par http, il faut aussi renseigner l'adresse IP Publique de notre C2 Server :  
+![c2 profiles](https://github.com/user-attachments/assets/2071c49a-4ec8-4aa9-b062-a33a2c4d2a7b)
+    
 
 
 
