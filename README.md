@@ -2,7 +2,11 @@
 ## Introduction
 Bonjour à tous, dans le but de développer mes compétences techniques sur les différentes tâches que peut rencontrer un analyste SOC, j'ai participé au challenge organisé par le vidéaste MyDFIR.
 
-Ce challenge s'est déroulé sur 30 jours et a pour but principal de faire monter en compétence les aspirants analyste SOC, en proposant des cas concrets.
+Ce challenge s'est déroulé sur 30 jours et j'ai décidé de rédiger un compte-rendu qui va principalement aborder les points suivants :
+   * Mise en place de l'infrastructure du lab
+   * Création des alertes sur ELK
+   * Génération d'un Payload Malveillant depuis notre C2 Server
+   * Automatisation vers notre serveur de Ticketing
 
 ## Topologie du challenge
 ![finalfinaifnal drawio](https://github.com/user-attachments/assets/6f5e1890-8df4-4b88-8313-1ebf1bf1c9ad)
