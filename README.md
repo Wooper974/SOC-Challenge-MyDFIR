@@ -221,7 +221,10 @@ ATTENTION : il faut modifier le champ "Callback host" car nous souhaitons passer
 
 Et enfin, on peut donner un nom à notre payload :  
 ![svchost-wooper](https://github.com/user-attachments/assets/33d2bd88-a083-410d-9db2-fd3c7a2d5638)
-  
+
+Nous pouvons maintenant copier le lien du payload pour l'importer sur notre C2 server, puis on va le renommer histoire qu'il soit un peu plus digeste à lire :  
+![rename payload on mythic](https://github.com/user-attachments/assets/f76668b8-c92a-4553-a62d-60eb5ab5803d)
+
 
 
 
