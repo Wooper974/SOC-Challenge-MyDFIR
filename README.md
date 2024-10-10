@@ -199,5 +199,15 @@ Ici, nous allons principalement désactiver Windows Defender et plus particuliè
 
 Nous allons maintenant générer un agent Mythic qui va permettre à la machine windows d'établir une connexion avec notre C2 server.
 
+Tout d'abord, il faut télécharger un agent qui soit compatible avec un OS Windows. La page Github de Mythic mets à disposition une liste des différents agents disponibles et nous allons choisir d'installer l'agent Apollo via cette commande : 
+![apollo dl](https://github.com/user-attachments/assets/e9d2bd44-13f0-4c92-9b1b-09d8292785a6)
+
+Ensuite, il faut également télécharger un "C2 Profile" et celui que nous allons choisir dans notre cas est le profil http via cette commande : ./mythic-cli install https://github.com/MythicC2Profiles/http
+
+On peut maintenant observer les deux composants qui vont nous servir pour générer notre Payload
+![apollo online](https://github.com/user-attachments/assets/1cd2a290-c46d-4beb-8e47-ebbf0214fc12) ![c2 profiles mythric](https://github.com/user-attachments/assets/29f9de93-cfcb-402b-99d7-72fc09d1bde4)
+
+
+
 
 
