@@ -228,7 +228,16 @@ Nous pouvons maintenant copier le lien du payload pour l'importer sur notre C2 s
 Pour rappel, l'objectif de cette phase est d'éxécuter notre payload sur la machine victime, et c'est dans cette démarche qu'on va lancer un serveur http sur le port 9999 depuis notre C2 server avec la commande : python3 -m http.server 9999.  
 
 On peut maintenant passer par notre session RDP ouverte depuis le poste de l'attaquant, pour télécharger ce payload via la commande :  
-![download on windows](https://github.com/user-attachments/assets/dbfef8b7-94db-4a99-87e6-878076579d43)
+![download on windows](https://github.com/user-attachments/assets/dbfef8b7-94db-4a99-87e6-878076579d43)  
+
+Une fois le payload téléchargé, on peut tout de suite le démarrer avec la commande ./svchost-wooper.exe  
+Pour vérifier que le payload fonctionne, si on retourne sur l'interface web de Mythic on devrait apercevoir une session actif dans l'onglet "Active Callbacks".  
+
+### Phase 4 : Exfiltration  
+
+Maintenant que nous avons une session actif depuis notre interface Mythic, on peut éxécuter un certain nombre de commande, et la commande qui va nous intérésser est celle qui va permettre l'exfiltration du fichier passwords.txt :  
+![apollo command download pasdswd](https://github.com/user-attachments/assets/2be0d7d6-3b39-408f-8d1b-486315c8184e)
+
 
 
 
