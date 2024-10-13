@@ -238,6 +238,10 @@ Pour vérifier que le payload fonctionne, si on retourne sur l'interface web de 
 Maintenant que nous avons une session actif depuis notre interface Mythic, on peut éxécuter un certain nombre de commande, et la commande qui va nous intérésser est celle qui va permettre l'exfiltration du fichier passwords.txt :  
 ![apollo command download pasdswd](https://github.com/user-attachments/assets/2be0d7d6-3b39-408f-8d1b-486315c8184e)
 
+## Détéction d'une activité Mythic sur ELK
+
+Cette phase d'attaque étant désormais terminé, en tant qu'analyste SOC nous souhaitons avant tout savoir comment détécter ce genre d'activité et dans notre cas, détécter la présence de Mythic sur les machines de notre parc.
+
 
 
 
