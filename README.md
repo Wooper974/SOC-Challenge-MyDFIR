@@ -223,7 +223,12 @@ Et enfin, on peut donner un nom à notre payload :
 ![svchost-wooper](https://github.com/user-attachments/assets/33d2bd88-a083-410d-9db2-fd3c7a2d5638)
 
 Nous pouvons maintenant copier le lien du payload pour l'importer sur notre C2 server, puis on va le renommer histoire de le rendre un peu plus digeste à lire :  
-![rename payload on mythic](https://github.com/user-attachments/assets/f76668b8-c92a-4553-a62d-60eb5ab5803d)
+![rename payload on mythic](https://github.com/user-attachments/assets/f76668b8-c92a-4553-a62d-60eb5ab5803d)  
+
+Pour rappel, l'objectif de cette phase est d'éxécuter notre payload sur la machine victime, et c'est dans cette démarche qu'on va lancer un serveur http sur le port 9999 depuis notre C2 server avec la commande : python3 -m http.server 9999.  
+
+On peut maintenant passer par notre session RDP ouverte depuis le poste de l'attaquant, pour télécharger ce payload via la commande :  
+![download on windows](https://github.com/user-attachments/assets/dbfef8b7-94db-4a99-87e6-878076579d43)
 
 
 
