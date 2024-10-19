@@ -250,7 +250,9 @@ Imaginons que nous voulons créer une alerte pour détécter si le payload malve
 
 Pour rappel, L'event ID 1 représente dans sysmon la création d'un processus.  
 Ensuite, nous pouvons également copier la signature SHA256 du payload et même si c'est relativement simple pour un attaquant de modifier la signature de son payload, ici on souhaite uniquement détécter ce payload en particulier.  
-Et enfin, le champ winlog.event_Data.OriginalFileName contient le nom de l'agent utilisé dans notre payload, à savoir Apollo.
+Et enfin, le champ winlog.event_Data.OriginalFileName contient le nom de l'agent utilisé dans notre payload, à savoir Apollo.  
+![Capture d’écran 2024-10-19 202334](https://github.com/user-attachments/assets/dcaae9e3-cca8-4ca9-a852-1ada81114fbe)
+
 
 
 
