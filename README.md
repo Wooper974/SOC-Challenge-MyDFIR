@@ -242,6 +242,16 @@ Maintenant que nous avons une session actif depuis notre interface Mythic, on pe
 
 Cette phase d'attaque étant désormais terminé, en tant qu'analyste SOC nous souhaitons avant tout savoir comment détécter ce genre d'activité et dans notre cas, détécter la présence de Mythic sur les machines de notre parc.
 
+Imaginons que nous voulons créer une alerte pour détécter si le payload malveillant est présent sur d'autres machines du parc. On va d'abord lister les champs qui peuvent nous aider en regardant les logs générés par l'éxécution de notre payload :  
+
+   * event.code : 1
+   * winlog.event_data.Hashes
+   * winlog.event_data.OriginalFileName  
+
+Pour rappel, L'event ID 1 représente dans sysmon la création d'un processus.  
+Ensuite, nous pouvons également copier la signature SHA256 du payload et même si c'est relativement simple pour un attaquant de modifier la signature de son payload, ici on souhaite uniquement détécter ce payload en particulier.  
+Et enfin, le champ winlog.event_Data.OriginalFileName contient le nom de l'agent utilisé dans notre payload, à savoir Apollo.
+
 
 
 
