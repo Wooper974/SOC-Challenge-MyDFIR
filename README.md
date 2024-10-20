@@ -253,7 +253,9 @@ Ensuite, nous pouvons également copier la signature SHA256 du payload et même 
 Et enfin, le champ winlog.event_Data.OriginalFileName contient le nom de l'agent utilisé dans notre payload, à savoir Apollo.  
 ![Capture d’écran 2024-10-19 202334](https://github.com/user-attachments/assets/dcaae9e3-cca8-4ca9-a852-1ada81114fbe)  
 
-Nous pouvons également créer des dashboard pour mieux visualiser des activités suspects que l'attaquant pourrait laisser, Sysmon
+Nous pouvons également créer des dashboard pour mieux visualiser des activités suspects que l'attaquant pourrait laisser, comme l'event ID 3 de Sysmon pour sonder les connexions sortantes qui ont abouties.    
+![2 dashboard network connection](https://github.com/user-attachments/assets/a972fc39-d78f-4a13-ad7d-d13304f123b0)
+
 
 
 
