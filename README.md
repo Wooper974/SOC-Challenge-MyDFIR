@@ -254,7 +254,17 @@ Et enfin, le champ winlog.event_Data.OriginalFileName contient le nom de l'agent
 ![Capture d’écran 2024-10-19 202334](https://github.com/user-attachments/assets/dcaae9e3-cca8-4ca9-a852-1ada81114fbe)  
 
 Nous pouvons également créer des dashboard pour mieux visualiser des activités suspects que l'attaquant pourrait laisser, comme l'event ID 3 de Sysmon pour sonder les connexions sortantes qui ont abouties.    
-![2 dashboard network connection](https://github.com/user-attachments/assets/a972fc39-d78f-4a13-ad7d-d13304f123b0)
+![2 dashboard network connection](https://github.com/user-attachments/assets/a972fc39-d78f-4a13-ad7d-d13304f123b0)  
+
+## Mise en place du serveur de ticketing
+
+Dans un environnement SOC, le suivi des alertes joue une place fondamental et nous allons donc faire en sorte qu'un ticket sera automatiquement généré lorsqu'une alerte est déclenchée.
+
+On va tout d'abord mettre en place le serveur de Ticketing en installant une machine windows avec un serveur XAMPP pour simuler le serveur Web qui hébégera notre solution de ticketing.  
+Dans ce lab, on va utiliser osTicket en téléchargeant sa dernière version présente sur leur site, et il faudra ensuite placer ses dossiers dans le répértoire xampp>htdocs>osTicket.  
+
+Après avoir terminé toutes les étapes de configurations, on peut désormais se connecter à l'interface admin via l'adresse du Staff Control Panel :  
+![congrats os](https://github.com/user-attachments/assets/8a55fc38-4840-42ec-88a6-ee3b977901e1)
 
 
 
