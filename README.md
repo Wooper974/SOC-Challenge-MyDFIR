@@ -4,7 +4,7 @@ Bonjour à tous, dans le but de développer mes compétences techniques sur les 
 
 Ce challenge s'est déroulé sur 30 jours et j'ai décidé de rédiger un compte-rendu qui va principalement aborder les points suivants :
    * Mise en place de l'infrastructure du lab
-   * Création des alertes de détéction sur ELK
+   * Création des alertes de détection sur ELK
    * Génération d'un Payload Malveillant depuis notre C2 Server
    * Automatisation entre le serveur ELK et de Ticketing
 
@@ -68,7 +68,7 @@ L'accès à l'interface web est désormais disponible et la première chose qui 
 Pour les besoins de ce lab, nous allons volontairement créer un serveur Windows 2022 qui aura le service RDP exposé sur internet.
   Conformément à la topologie du challenge, cette machine ne sera pas placée dans le réseau virtuel privé, car dans le cas où cette machine serait compromise, l'attaquant aura la possibilité de communiquer avec l'entièreté des autres machines du réseau, ce qui n'est clairement pas souhaitable.
 
-A la création du serveur windows, il faut simplement ne séléctionner aucun groupe de pare-feu, de manière à autoriser toutes les demandes de connexion en bureau à distance (RDP) en provenance d'internet.
+A la création du serveur windows, il faut simplement ne sélectionner aucun groupe de pare-feu, de manière à autoriser toutes les demandes de connexion en bureau à distance (RDP) en provenance d'internet.
 Une fois la machine créée, on va s'assurer que le service RDP est bien exposé sur internet en entrant l'adresse IP publique du serveur windows depuis notre PC : 
 
 ![winservexpose](https://github.com/user-attachments/assets/89b0ecaa-e624-45dd-9829-40c5a03aadbb)
@@ -78,8 +78,8 @@ Une fois la machine créée, on va s'assurer que le service RDP est bien exposé
 
 Tout d'abord un Fleet est un serveur qui va centraliser la gestion des agents Elastic, et un peu de la même manière que les GPO sur un AD, il va permettre de plus facilement pousser les nouvelles configurations sur tous les agents de votre parc informatique.
 
-J'ai dans un premier temps créer une nouvelle machine virtuelle Ubuntu dans le même réseau virtuel privé que le serveur ELK.  
-Ensuite, nous devons faire en sorte que le serveur ELK puisse savoir que nous souhaitons désigner ce nouveau serveur en tant que Fleet, et dans l'onglet Management>Fleet, on a la possibilité d'ajouter un serveur fleet en renseignant dans notre cas, l'adresse IP Publique de la dernière machine virtuelle créée.
+J'ai dans un premier temps crée une nouvelle machine virtuelle Ubuntu dans le même réseau virtuel privé que le serveur ELK.  
+Ensuite, nous devons faire en sorte que le serveur ELK puisse savoir que nous souhaitons désigner ce nouveau serveur en tant que Fleet, et dans l'onglet Management>Fleet, on a la possibilité d'ajouter un serveur fleet en renseignant dans notre cas, l'adresse IP publique de la dernière machine virtuelle créée.
 
 Il ne nous reste plus qu'à entrer sur le serveur Fleet la commande qui a été générée suite à la précédente manipulation :
 
@@ -89,7 +89,7 @@ ATTENTION : Il ne faut pas oublier d'autoriser les flux entrants et sortants ent
 
 ## Monitoring de la machine Windows
 
-Maintenant que le serveur Fleet est configuré, on peut passer à l'ajout de l'agent elastic sur notre machine windows, et pour cette étape il faut d'abord créer une nouvelle politique d'agent. Cette politique aura pour effet de générer la série de commande à utiliser pour installer l'agent sur un hôte Windows : 
+Maintenant que le serveur Fleet est configuré, on peut passer à l'ajout de l'agent elastic sur notre machine windows, et pour cette étape il faut d'abord créer une nouvelle politique d'agent. Cette politique aura pour effet de générer la série de commandes à utiliser pour installer l'agent sur un hôte Windows : 
 
 ![Win-policy](https://github.com/user-attachments/assets/a2d0f74a-7f7a-498e-9b6e-f0fd1e9ba709)
 
@@ -101,75 +101,75 @@ Il va falloir ensuite renseigner sur l'interface web d'Elasticsearch qu'on souha
 
 ![Capture d'écran 2024-09-21 110442](https://github.com/user-attachments/assets/45fa7a41-f5ed-4a0c-bc4a-55efb56af823)
 
-Enfin, il faut ajouter la commande "--insecure" à la fin de la dernière commande car cette option permet d'autoriser le fait qu'on passe par un certificat auto-signée.  
+Enfin, il faut ajouter la commande "--insecure" à la fin de la dernière commande, car cette option permet d'autoriser le fait qu'on passe par un certificat autosigné.  
 Nous pouvons maintenant voir que notre serveur Windows remonte bien dans l'interface d'Elasticsearch :
 
 ![success-windows-fleet](https://github.com/user-attachments/assets/824c148d-0cb5-4681-b040-a022556e9e0c)
 
-Il reste une dernière chose à faire pour terminer cette étape qui à terme doit permettre la remonter de logs du serveur windows sur notre serveur ELK, car jusqu'à maintenant nous avons fait en sorte que notre serveur windows puisse communiquer avec le serveur Fleet, mais il reste encore quelques autorisation du flux à faire pour permettre la communication avec le serveur ELK.  
+Il reste une dernière chose à faire pour terminer cette étape qui à terme doit permettre la remonter de logs du serveur windows sur notre serveur ELK, car jusqu'à maintenant nous avons fait en sorte que notre serveur windows puisse communiquer avec le serveur Fleet, mais il reste encore quelques autorisations de flux à faire pour permettre la communication avec le serveur ELK.  
 
 Il va falloir s'assurer de deux choses :
 
    * Autoriser sur le pare-feu interne du serveur ELK qu'il autorise les communications entrantes sur le port 9200
-   * Autoriser sur le pare-feu de notre hébérgeur, la communication entre notre serveur windows et le serveur ELK
+   * Autoriser sur le pare-feu de notre hébergeur, la communication entre notre serveur windows et le serveur ELK
 
 Pour vérifier le bon fonctionnement de ces étapes, vous devriez pouvoir observer des logs remontés par le serveur windows dans l'onglet Analytics>Discover.  
 
-J'ai par la suite installé Sysmon sur mon serveur windows qui me permettra d'avoir d'avantages de logs pertinents qui seront remontés sur Elasticsearch.
+J'ai par la suite installé Sysmon sur mon serveur windows qui me permettra d'avoir d'avantage de logs pertinents qui seront remontés sur Elasticsearch.
 
 ## Injection des logs Sysmon et Defender sur Elasticsearch
 
 Nous souhaitons être capable de voir les logs Sysmon depuis notre console Elasticsearch, et il va falloir en premier lieu ajouter l'intégration suivante :  
 ![wineventlog](https://github.com/user-attachments/assets/fa39aae1-a113-4b57-a80a-9010a1f86cf3)
 
-L'un des champs les plus importants lorsqu'il s'agit de configurer une intégration, est le champ "Channel Name", car c'est dans ce champ qu'on va spécifier le chemin qui contient les logs Sysmon dans l'observateur d'événements :
+L'un des champs les plus importants lorsqu'il s'agit de configurer une intégration, est le champ "Channel Name", car c'est dans ce champ qu'on va spécifier le chemin qui contient les logs Sysmon dans l'observateur d'évènements :
 ![channelname-sysmon](https://github.com/user-attachments/assets/14fffd3d-6da2-45fa-9833-68f6570fb32b)
 
-On va littéralement faire la même manipulation pour les logs de Microsoft Defender sauf que cette fois-ci, on va devoir filtrer les events qu'on veut remonter car ils ne sont pas tous pertinents.  
+On va littéralement faire la même manipulation pour les logs de Microsoft Defender sauf que cette fois-ci, on va devoir filtrer les events qu'on souhaite en priorité faire remonter, car ils ne sont pas tous pertinents.  
 Il faut deja commencer par ajouter le bon chemin dans le champ "Channel Name" qui est le suivant : Microsoft-Windows-Windows Defender/Operational.  
-Et maintenant, on va s'intérésser au champ "Event ID" car c'est ici qu'on va pouvoir spécifier les events qu'on souhaite faire remonter :  
+Et maintenant, on va s'intéresser au champ "Event ID" car c'est ici qu'on va pouvoir spécifier les events qu'on souhaite faire remonter :  
 ![eventid-defender](https://github.com/user-attachments/assets/baf686e4-bb25-4b91-89f7-4a4b4071ff80)
 
-   * Event ID 1116 : Defender détécte un malware ou un logiciel potentiellement compromettant
+   * Event ID 1116 : Defender détecte un malware ou un logiciel potentiellement compromettant
    * Event ID 1117 : Defender a effectué une action pour protéger notre poste d'un malware ou d'un logiciel jugé suspicieux
-   * Event ID 5001 : La fonctionnalitié de Defender permettant de scanner des malware sur notre poste a été désactivée.
+   * Event ID 5001 : La fonctionnalité de Defender permettant de scanner des malware sur notre poste a été désactivée.
 
 Pour vérifier que les logs Sysmon remontent dans notre ELK, on peut rechercher par exemple l'event ID 1 qui correspond à la création de processus : 
 ![sysmonlog-discover](https://github.com/user-attachments/assets/b0b0be85-0273-424d-90a7-7dd87959f6a2)
 
 ## Installation et Monitoring du serveur Ubuntu
 
-Ce serveur a la même objectif que notre serveur Windows, c'est à dire avoir un service exposé sur internet qui sera en l'occurence SSH.  
+Ce serveur a le même objectif que notre serveur Windows, c'est à dire avoir un service exposé sur internet qui sera en l'occurrence SSH.  
 Après avoir installé la version 22.04 de Ubuntu, il faut simplement s'assurer que le service SSH soit bien installé et activé.
 
 Il reste à installer l'agent Elastic sur ce serveur et comme précédemment, on va créer une nouvelle politique d'agent Linux.  
 On souhaite collecter les logs permettant d'observer une attaque par bruteforce en passant par le service SSH, on aura donc uniquement besoin de collecter les informations du fichier /var/log/auth/log.
 
-Ensuite, on va retrouver le même procéder que pour le serveur windows en créant un nouvelle agent, ce qui aura pour effet de nous générer une commande à entrer sur le serveur Linux pour effectuer l'installation de l'agent. ATTENTION : Il ne faut pas oublier de créer une règle de pare-feu qui autorise la communication entre notre nouveau serveur Linux et le serveur ELK
-Pour vérifier que les logs de notre Machine Ubuntu remontent, vous devriez voir apparaître dans le champ "agent.name" le nom du serveur.
+Ensuite, on va retrouver le même procéder que pour le serveur windows en créant un nouvel agent, ce qui aura pour effet de nous générer une commande à entrer sur le serveur Linux pour effectuer l'installation de l'agent. ATTENTION : Il ne faut pas oublier de créer une règle de pare-feu qui autorise la communication entre notre nouveau serveur Linux et le serveur ELK
+Pour vérifier que les logs de notre Machine Ubuntu remontent, vous devriez voir apparaitre dans le champ "agent.name" le nom du serveur.
 
 ## Création des alertes sur ELK
 
-On va créer une alerte qui est en soit relativement simple mais qui répond néanmoins à ce que recherchions, à savoir être alerter lorsqu'il y a potentiellement une attaque par brute force faite sur notre machine Windows et Linux qui ont respectivement le service RDP et SSH exposé sur internet.
+On va créer une alerte qui est en soit relativement simple, mais qui répond néanmoins à ce que nous recherchions, à savoir être alerté lorsqu'il y a potentiellement une attaque par brute force faite sur notre machine Windows et Linux qui ont respectivement le service RDP et SSH exposé sur internet.
 
-Pour notre machine Linux, on va créer cette alerte qui sera déclenché dès qu'il y aura plus de 3 tentatives de connexions par SSH à notre machine en l'espace de 2 minutes :  
+Pour notre machine Linux, on va créer cette alerte qui sera déclenchée dès qu'il y aura plus de 3 tentatives de connexions par SSH à notre machine en l'espace de 2 minutes :  
 ![alert-sshbruteforce](https://github.com/user-attachments/assets/91c857eb-ce41-45bb-bfbc-40db863ef85f)
 
 Pour notre machine Windows, on utilise la même approche adaptée pour le service RDP car on va regarder cette fois-ci l'event ID 4625 qui signifie qu'il y a eu un compte qui n'a pas réussi à s'authentifier, et donc potentiellement une attaque par bruteforce : 
 ![alert-rdp brute force](https://github.com/user-attachments/assets/5c21ec62-cec0-4d5d-93d2-4ea5df4e1a2a)
 
-Les deux règles que nous venons de créer ne sont toutefois pas aussi optimales que nous le souhaitons car en l'état, si vous regardez comment sont affichés les alertes qui remontent, l'affichage des informations pertinentes sont loin d'être facilement visible.  
-Nous allons donc maintenant créer des règles de détéctions en séléctionnant les champs qui vont fortement nous intérésser, à savoir :  
+Les deux règles que nous venons de créer ne sont toutefois pas aussi optimales que nous le souhaitons car en l'état, si vous regardez comment sont affichées les alertes qui remontent, l'affichage des informations pertinentes est loin d'être facilement visible.  
+Nous allons donc maintenant créer des règles de détections en sélectionnant les champs qui vont fortement nous intéresser, à savoir :  
    * L'adresse source qui initie la tentative de connexion en SSH ou RDP
    * Le nom d'utilisateur qui tente de s'authentifier
 
-Dans Security>Rules>Detection rules, on a la possibilité de créer des règles de détéction un peu plus customizable en spécifiant les champs qui nous intéressent : 
+Dans Security>Rules>Detection rules, on a la possibilité de créer des règles de détection un peu plus customizable en spécifiant les champs qui nous intéressent : 
 ![Capture d’écran 2024-10-07 181552](https://github.com/user-attachments/assets/72eb7fa1-a977-4a17-b98d-2a1fdcde7f22)
 
 ## Mise en place de l'environnement de l'attaquant
 
 Tout d'abord, l'attaquant utilisera comme technique ce qu'on appelle une attaque par Command & Control, qui peut se traduite par le fait qu'un attaquant tente de contrôler le système de la victime via plusieurs moyens. 
-Ici, nous utiliserons un C2 server de manière à pouvoir injecter un fichier malveillant sur la machine de la victime, ce qui nous permettra par la suite d'avoir plus de privélége sur celle-ci afin de pouvoir réaliser des actions comme exfiltrer un fichier de la victime contenant des données confidentiels vers notre serveur.
+Ici, nous utiliserons un C2 server de manière à pouvoir injecter un fichier malveillant sur la machine de la victime, ce qui nous permettra par la suite d'avoir plus de privéléges sur celle-ci afin de pouvoir réaliser des actions comme exfiltrer un fichier de la victime contenant des données confidentielles vers notre serveur.
 
 ### Installation et configuration du C2 Server
 
@@ -182,14 +182,14 @@ Une fois dans le dossier Mythic, on va lancer le script qui permet de l'installe
 On maintenant lancer mythic avec la commande suivante : ./mythic_cli start  
 
 Après avoir démarré Mythic, on va tout de suite se diriger vers son interface web (https:AdresseIP:7443).  
-INFO : Les identifiants de connexion se trouve dans le fichier .env  
+INFO : Les identifiants de connexion se trouvent dans le fichier .env  
 
 Nous avons désormais un C2 server fonctionnel qu'on va pouvoir utiliser pour parvenir à notre objectif de compromission.
 
 ### Phase 1 : Initial Access
 
 Cette première phase a pour objectif d'obtenir un premier accès sur la machine victime depuis le poste attaquant.
-Ce lab n'a pas pour but de se concentrer sur cette axe offensive donc nous allons établir un scénario assez simpliste où l'utilisateur de la machine windows a définit un mot de passe faible pour son compte Administrateur (Snk123!).  
+Ce lab n'a pas pour but de se concentrer sur cet axe offensif donc nous allons établir un scénario assez simpliste où l'utilisateur de la machine windows a défini un mot de passe faible pour son compte Administrateur (Snk123!).  
 Ensuite, on souhaite avoir un accès en RDP à la machine victime, on va donc faire faire une attaque par bruteforce depuis notre machine kali en ajoutant le mot de passe précédemment cité à notre wordlist :  
 ![rddddp successsssss](https://github.com/user-attachments/assets/992a926d-ac12-4479-baaf-8c5525f903a2)
 
@@ -216,7 +216,7 @@ Dans Payload>Generate New Payload, on va utiliser les paramètres suivants :
    * Type : WinExe
    * Commands : Inclure toutes les commandes
    * C2 Profiles : http  
-ATTENTION : il faut modifier le champ "Callback host" car nous souhaitons passer par http, il faut aussi renseigner l'adresse IP Publique de notre C2 Server :  
+ATTENTION : il faut modifier le champ "Callback host" car nous souhaitons passer par http, il faut aussi renseigner l'adresse IP publique de notre C2 Server :  
 ![c2 profiles](https://github.com/user-attachments/assets/2071c49a-4ec8-4aa9-b062-a33a2c4d2a7b)
 
 Et enfin, on peut donner un nom à notre payload :  
@@ -225,31 +225,31 @@ Et enfin, on peut donner un nom à notre payload :
 Nous pouvons maintenant copier le lien du payload pour l'importer sur notre C2 server, puis on va le renommer histoire de le rendre un peu plus digeste à lire :  
 ![rename payload on mythic](https://github.com/user-attachments/assets/f76668b8-c92a-4553-a62d-60eb5ab5803d)  
 
-Pour rappel, l'objectif de cette phase est d'éxécuter notre payload sur la machine victime, et c'est dans cette démarche qu'on va lancer un serveur http sur le port 9999 depuis notre C2 server avec la commande : python3 -m http.server 9999.  
+Pour rappel, l'objectif de cette phase est d'éxecuter notre payload sur la machine victime, et c'est dans cette démarche qu'on va lancer un serveur http sur le port 9999 depuis notre C2 server avec la commande : python3 -m http.server 9999.  
 
 On peut maintenant passer par notre session RDP ouverte depuis le poste de l'attaquant, pour télécharger ce payload via la commande :  
 ![download on windows](https://github.com/user-attachments/assets/dbfef8b7-94db-4a99-87e6-878076579d43)  
 
 Une fois le payload téléchargé, on peut tout de suite le démarrer avec la commande ./svchost-wooper.exe  
-Pour vérifier que le payload fonctionne, si on retourne sur l'interface web de Mythic on devrait apercevoir une session actif dans l'onglet "Active Callbacks".  
+Pour vérifier que le payload fonctionne, si on retourne sur l'interface web de Mythic on devrait apercevoir une session active dans l'onglet "Active Callbacks".  
 
 ### Phase 4 : Exfiltration  
 
-Maintenant que nous avons une session actif depuis notre interface Mythic, on peut éxécuter un certain nombre de commande, et la commande qui va nous intérésser est celle qui va permettre l'exfiltration du fichier passwords.txt :  
+Maintenant que nous avons une session active depuis notre interface Mythic, on peut éxecuter un certain nombre de commande, et la commande qui va nous intéresser est celle qui va permettre l'exfiltration du fichier passwords.txt :  
 ![apollo command download pasdswd](https://github.com/user-attachments/assets/2be0d7d6-3b39-408f-8d1b-486315c8184e)
 
-## Détéction d'une activité Mythic sur ELK
+## Détection d'une activité Mythic sur ELK
 
-Cette phase d'attaque étant désormais terminé, en tant qu'analyste SOC nous souhaitons avant tout savoir comment détécter ce genre d'activité et dans notre cas, détécter la présence de Mythic sur les machines de notre parc.
+Cette phase d'attaque étant désormais terminé, en tant qu'analyste SOC nous souhaitons avant tout savoir comment détecter ce genre d'activité et dans notre cas, détecter la présence de Mythic sur les machines de notre parc.
 
-Imaginons que nous voulons créer une alerte pour détécter si le payload malveillant est présent sur d'autres machines du parc. On va d'abord lister les champs qui peuvent nous aider en regardant les logs générés par l'éxécution de notre payload :  
+Imaginons que nous voulons créer une alerte pour détecter si le payload malveillant est présent sur d'autres machines du parc. On va d'abord lister les champs qui peuvent nous aider en regardant les logs générés par l'éxecution de notre payload :  
 
    * event.code : 1
    * winlog.event_data.Hashes
    * winlog.event_data.OriginalFileName  
 
 Pour rappel, L'event ID 1 représente dans sysmon la création d'un processus.  
-Ensuite, nous pouvons également copier la signature SHA256 du payload et même si c'est relativement simple pour un attaquant de modifier la signature de son payload, ici on souhaite uniquement détécter ce payload en particulier.  
+Ensuite, nous pouvons également copier la signature SHA256 du payload et même si c'est relativement simple pour un attaquant de modifier la signature de son payload, ici on souhaite uniquement détecter ce payload en particulier.  
 Et enfin, le champ winlog.event_Data.OriginalFileName contient le nom de l'agent utilisé dans notre payload, à savoir Apollo.  
 ![Capture d’écran 2024-10-19 202334](https://github.com/user-attachments/assets/dcaae9e3-cca8-4ca9-a852-1ada81114fbe)  
 
@@ -258,28 +258,28 @@ Nous pouvons également créer des dashboard pour mieux visualiser des activité
 
 ## Mise en place du serveur de ticketing
 
-Dans un environnement SOC, le suivi des alertes joue une place fondamental et nous allons donc faire en sorte qu'un ticket sera automatiquement généré lorsqu'une alerte est déclenchée.
+Dans un environnement SOC, le suivi des alertes joue une place fondamentale et nous allons donc faire en sorte qu'un ticket sera automatiquement généré lorsqu'une alerte est déclenchée.
 
-On va tout d'abord mettre en place le serveur de Ticketing en installant une machine windows avec un serveur XAMPP pour simuler le serveur Web qui hébégera notre solution de ticketing.  
-Dans ce lab, on va utiliser osTicket en téléchargeant sa dernière version présente sur leur site, et il faudra ensuite placer ses dossiers dans le répértoire xampp>htdocs>osTicket.  
+On va tout d'abord mettre en place le serveur de Ticketing en installant une machine windows avec un serveur XAMPP pour simuler le serveur Web qui hébergera notre solution de ticketing.  
+Dans ce lab, on va utiliser osTicket en téléchargeant sa dernière version présente sur leur site, et il faudra ensuite placer ses dossiers dans le répertoire xampp>htdocs>osTicket.  
 
 Après avoir terminé toutes les étapes de configurations, on peut désormais se connecter à l'interface admin via l'adresse du Staff Control Panel :  
 ![congrats os](https://github.com/user-attachments/assets/8a55fc38-4840-42ec-88a6-ee3b977901e1)  
 
-Maintenant que le serveur de ticketing a correctement été mis en place, il reste maintenant à faire la liaision avec notre serveur ELK.
+Maintenant que le serveur de ticketing a correctement été mis en place, il reste maintenant à faire la liaison avec notre serveur ELK.
 
 On va donc dans un premier temps créer une clé API depuis notre serveur de ticketing dans l'onglet Manage>API>Add New API Key  
-A la création de la clé, on nous demande de renseigner une adresse IP qui dans notre cas, correspond à l'adresse IP privé du serveur ELK étant donné que nous sommes dans le même réseau privé (172.16.0.0/24).  
+A la création de la clé, on nous demande de renseigner une adresse IP qui dans notre cas, correspond à l'adresse IP privée du serveur ELK puisque que nous sommes dans le même réseau privé (172.16.0.0/24).  
 
-Une fois la clé API générée, on peut maintenant partir sur notre serveur ELK dans l'onglet Management>Stack Management>Connectors, et créer un connecteur pour envoyer des réquêtes vers un service web (serveur de ticketing) en séléctionnant le connecteur "Webhook".  
-Il faut ensuite configuré ce connecteur avec ces paramètres suivants qui correspond à l'ajout du chemin pour la création de ticket et de notre clé API :  
+Une fois la clé API générée, on peut maintenant partir sur notre serveur ELK dans l'onglet Management>Stack Management>Connectors, et créer un connecteur pour envoyer des requêtes vers un service web (serveur de ticketing) en sélectionnant le connecteur "Webhook".  
+Il faut ensuite configuré ce connecteur avec ces paramètres suivants qui correspond à l'ajout du chemin pour la création de tickets et de notre clé API :  
 ![api key connectors](https://github.com/user-attachments/assets/19273588-308d-4476-8ad8-ea4beda57eb7)
 
 On peut maintenant enregistrer le connecteur pour tester si la création d'un ticket fonctionne lorsqu'une alerte est déclenchée.  
 La page GitHub de osTicket contient un exemple de payload qu'on peut utiliser pour générer une alerte : 
 ![wooper osticket success](https://github.com/user-attachments/assets/035e4dda-76c8-4ba6-85ab-262d6b1030dc)
 
-Enfin, pour vérifier la création de ticket, vous devez appuyer sur le bouton "Run" pour déclencher le test et voir si un ticket a bien été crée dans votre console osTicket :  
+Enfin, pour vérifier la création de tickets, vous devez appuyer sur le bouton "Run" pour déclencher le test et voir si un ticket a bien été crée dans votre console osTicket :  
 ![finalllyyyyy osticket](https://github.com/user-attachments/assets/99fa1b7d-62aa-496b-8301-327e7b616812)
 
 
