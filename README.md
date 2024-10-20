@@ -4,9 +4,9 @@ Bonjour à tous, dans le but de développer mes compétences techniques sur les 
 
 Ce challenge s'est déroulé sur 30 jours et j'ai décidé de rédiger un compte-rendu qui va principalement aborder les points suivants :
    * Mise en place de l'infrastructure du lab
-   * Création des alertes sur ELK
+   * Création des alertes de détéction sur ELK
    * Génération d'un Payload Malveillant depuis notre C2 Server
-   * Automatisation vers notre serveur de Ticketing
+   * Automatisation entre le serveur ELK et de Ticketing
 
 ## Topologie du challenge
 ![finalfinaifnal drawio](https://github.com/user-attachments/assets/6f5e1890-8df4-4b88-8313-1ebf1bf1c9ad)
@@ -264,7 +264,24 @@ On va tout d'abord mettre en place le serveur de Ticketing en installant une mac
 Dans ce lab, on va utiliser osTicket en téléchargeant sa dernière version présente sur leur site, et il faudra ensuite placer ses dossiers dans le répértoire xampp>htdocs>osTicket.  
 
 Après avoir terminé toutes les étapes de configurations, on peut désormais se connecter à l'interface admin via l'adresse du Staff Control Panel :  
-![congrats os](https://github.com/user-attachments/assets/8a55fc38-4840-42ec-88a6-ee3b977901e1)
+![congrats os](https://github.com/user-attachments/assets/8a55fc38-4840-42ec-88a6-ee3b977901e1)  
+
+Maintenant que le serveur de ticketing a correctement été mis en place, il reste maintenant à faire la liaision avec notre serveur ELK.
+
+On va donc dans un premier temps créer une clé API depuis notre serveur de ticketing dans l'onglet Manage>API>Add New API Key  
+A la création de la clé, on nous demande de renseigner une adresse IP qui dans notre cas, correspond à l'adresse IP privé du serveur ELK étant donné que nous sommes dans le même réseau privé (172.16.0.0/24).  
+
+Une fois la clé API générée, on peut maintenant partir sur notre serveur ELK dans l'onglet Management>Stack Management>Connectors, et créer un connecteur pour envoyer des réquêtes vers un service web (serveur de ticketing) en séléctionnant le connecteur "Webhook".  
+Il faut ensuite configuré ce connecteur avec ces paramètres suivants qui correspond à l'ajout du chemin pour la création de ticket et de notre clé API :  
+![api key connectors](https://github.com/user-attachments/assets/19273588-308d-4476-8ad8-ea4beda57eb7)
+
+On peut maintenant enregistrer le connecteur pour tester si la création d'un ticket fonctionne lorsqu'une alerte est déclenchée.  
+La page GitHub de osTicket contient un exemple de payload qu'on peut utiliser pour générer une alerte : 
+![wooper osticket success](https://github.com/user-attachments/assets/035e4dda-76c8-4ba6-85ab-262d6b1030dc)
+
+Enfin, pour vérifier la création de ticket, vous devez appuyer sur le bouton "Run" pour déclencher le test et voir si un ticket a bien été crée dans votre console osTicket :  
+![finalllyyyyy osticket](https://github.com/user-attachments/assets/99fa1b7d-62aa-496b-8301-327e7b616812)
+
 
 
 
